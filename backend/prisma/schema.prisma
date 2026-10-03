@@ -1,1 +1,40 @@
 
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Place {
+  id          String   @id @default(cuid())
+
+  name        String
+
+  type        String   @default("other")
+
+  icon        String   @default("📍")
+
+  color       String   @default("#2563eb")
+
+  description String   @default("")
+
+  note        String   @default("")
+
+  imageUrl    String?
+
+  latitude    Float
+
+  longitude   Float
+
+  favorite    Boolean  @default(false)
+
+  createdAt   DateTime @default(now())
+
+  updatedAt   DateTime @updatedAt
+
+  @@index([latitude, longitude])
+  @@index([type])
+}
