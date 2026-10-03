@@ -1,0 +1,12 @@
+{
+  "name": "real-world-map",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "npm --prefix frontend install && npm --prefix frontend run build",
+    "build:backend": "npm --prefix backend install && npm --prefix backend run build",
+    "start": "npm --prefix backend run start",
+    "dev": "concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\""
+  },
+  "devDependencies": {"concurrently": "^9.1.2"}
+}
